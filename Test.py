@@ -21,8 +21,18 @@ class TestDict():
             arrData.append(self.myDict[key])
         print(arrData)
 
+class ElDict(TestDict):
+
+    '''Конструктор'''
+    def __init__(self, myDict, key, valEement):
+        #super().__init__(self.myDict)
+        self.myDict = myDict
+        self.key = key
+        self.valElement = valEement
+
     '''Добавление в словарь элемента'''
     def addElementDict(self):
+        print('Получилось')
         pass
 
     ''' Удаление элементо Словаря '''
@@ -32,7 +42,9 @@ class TestDict():
 
 a ={'Name':'Mark', 'Фамиля':'Иванов', 'Sex':'man'}
 
-
-first = TestDict(a)
-first.returnKey()
-first.returnData()
+#
+# first = TestDict(a)
+# first.returnKey()
+# first.returnData()
+twice = ElDict(a, 'Имя', 'Миша')
+twice.returnData()
