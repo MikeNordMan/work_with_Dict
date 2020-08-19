@@ -1,19 +1,25 @@
 
 
 
-class tastDict():
+class TestDict():
 
     '''Конструктор'''
-    def __init__(self, dict):
-        self.dict = dict
+    def __init__(self, myDict):
+        self.myDict = myDict
 
     '''Возвращение Массива ключей'''
     def returnKey(self):
-        pass
+        arrKeys = []
+        for key in self.myDict:
+            arrKeys.append(key)
+        return arrKeys
 
     '''Возврашение массива данных'''
     def returnData(self):
-        pass
+        arrData = []
+        for key in self.myDict:
+            arrData.append(self.myDict[key])
+        print(arrData)
 
     '''Добавление в словарь элемента'''
     def addElementDict(self):
@@ -24,4 +30,9 @@ class tastDict():
         pass
 
 
+a ={'Name':'Mark', 'Фамиля':'Иванов', 'Sex':'man'}
 
+
+first = TestDict(a)
+first.returnKey()
+first.returnData()
