@@ -2,7 +2,7 @@ import PySimpleGUI as sg
 
 class MyWindow():
     '''Переменные класса'''
-    keys ={'exit':'-exit_', 'print':'-print-'}
+    keys ={'exit': '-exit_', 'print': '-print-', 'delete': '-del-'}
 
     '''Конструктор класса'''
     def __init__(self, mainWindow):
@@ -41,10 +41,21 @@ class MyWindow():
                 self.colseWindow(self.mainWindow, windowClass)
                 break
             if event == self.keys['print']:
-               print('Получилось, Работает')
+               self.myPrint()
+
+            if event == self.keys['delete']:
+               self.myDelete()
 
 
     '''Функция закрытия окна'''
     def colseWindow(self, mainWindow, windowClass):
         windowClass.close()
         mainWindow.UnHide()
+
+    '''Функция Печати '''
+    def myPrint(self):
+        print('Получилось, Работает')
+
+    '''Функция Удаление'''
+    def myDelete(self):
+        print('Удаление')

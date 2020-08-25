@@ -1,7 +1,12 @@
 import PySimpleGUI as sg
 from window_class import MyWindow
 from addWindow import AddWindow
+from reworkWindow import ReworkWindow
+from realWindow import RealWindow
 
+def prepareOpenWidow(activate, window):
+    activate = True
+    window.Hide()
 
 def openMineWindow():
 
@@ -28,22 +33,23 @@ def openMineWindow():
             break
 
         if event =='-add-' and not addWindow_active:
-            addWindow_active = True
-            mainWindow.Hide()
-            #w = AddWindow(mainWindow, 100)
+            prepareOpenWidow(addWindow_active, mainWindow)
             w = AddWindow(mainWindow)
             w.startWindow()
             addWindow_active = False
-            print('add')
+
 
         if event =='-real-' and not realWindow_active:
-            realWindow_active = True
-            #pass
-            print('real')
-        if event =='-rework-' and not reworkWindow_active:
-            realWindow_active =True
-            #pass
-            print('rework')
+            prepareOpenWidow(realWindow_active,mainWindow)
+            w = RealWindow(mainWindow)
+            w.startWindow()
+            realWindow_active = False
 
+
+        if event =='-rework-' and not reworkWindow_active:
+            prepareOpenWidow(realWindow_active,mainWindow)
+            w = ReworkWindow(mainWindow)
+            w.startWindow()
+            realWindow_active =False
 
     mainWindow.close()
