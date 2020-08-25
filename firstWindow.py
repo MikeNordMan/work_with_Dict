@@ -1,11 +1,11 @@
 import PySimpleGUI as sg
 from mainWindow import openMineWindow
 
+layout = [
+          [sg.Text('Начало работы приложеия')],
+          [sg.Button('Поехали', key='-ok-'),sg.Button('Выход', key='-exit-')]
+         ]
 
-layout=[
-        [sg.Text('Начало работы приложеия')],
-        [sg.Button('Поехали', key='-ok-'),sg.Button('Выход', key='-exit-')]
-       ]
 
 firstWindow = sg.Window('Первое окно', layout, size=(200, 100))
 

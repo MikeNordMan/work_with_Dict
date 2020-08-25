@@ -1,27 +1,50 @@
 import PySimpleGUI as sg
+
 class MyWindow():
-    def __init__(self, window):
-        self.window =window
+    '''Переменные класса'''
+    keys ={'exit':'-exit_', 'print':'-print-'}
 
-    layout = [
-        [sg.Text('Поступление')],
-        [sg.Button('Выход', key='-exit-')]
-    ]
+    '''Конструктор класса'''
+    def __init__(self, mainWindow):
+        self.mainWindow = mainWindow
 
 
+    '''Функция Layout Окна'''
     def returnLayout(self):
-        pass
+        layout = [
+                  [sg.Text('Тут LAYOUT окна')],
+                  [sg.Button('Выход', key=self.keys['exit'])]
+                 ]
+        return layout
+    '''Функция темы'''
+    def returnTheme(self):
+        theme = ''
+        return theme
 
+    '''Функция Имени'''
+    def returnName(self):
+        name = 'Окно'
+        return name
 
+    '''Основная функция класса'''
     def startWindow(self):
-        self.window.Hide()
-        windowClass =sg.Window('Окно',self.layout)
+        sg.theme(self.returnTheme())
+        windowClass =sg.Window(self.returnName(), self.returnLayout(), size=(300, 200))
+        self.controlWindow(windowClass)
+
+    '''Функция контроля окна'''
+    def controlWindow(self, windowClass):
         while True:
             event, values = windowClass.read()
 
-            if event in (None, '-exit-'):
-                windowClass.close()
-                self.window.UnHide()
+            if event in (None, self.keys['exit']):
+                self.colseWindow(self.mainWindow, windowClass)
                 break
-        windowClass.close()
+            if event == self.keys['print']:
+               print('Получилось, Работает')
 
+
+    '''Функция закрытия окна'''
+    def colseWindow(self, mainWindow, windowClass):
+        windowClass.close()
+        mainWindow.UnHide()

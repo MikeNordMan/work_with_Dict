@@ -1,5 +1,6 @@
 import PySimpleGUI as sg
 from window_class import MyWindow
+from addWindow import AddWindow
 
 
 def openMineWindow():
@@ -14,26 +15,27 @@ def openMineWindow():
            ]
 
     mainWindow = sg.Window('Главное окно', layout, size=(250, 250))
+
+    '''Переменные активности'''
     addWindow_active = False
     realWindow_active = False
     reworkWindow_active = False
 
     while True:
         event, values = mainWindow.read()
-        addWindow_active = False
 
         if event in (None, '-exit-'):
             break
 
         if event =='-add-' and not addWindow_active:
             addWindow_active = True
-            w = MyWindow(mainWindow)
+            mainWindow.Hide()
+            #w = AddWindow(mainWindow, 100)
+            w = AddWindow(mainWindow)
             w.startWindow()
-            w = None
-            #addWindow_active = False
-            #pass
-
+            addWindow_active = False
             print('add')
+
         if event =='-real-' and not realWindow_active:
             realWindow_active = True
             #pass
